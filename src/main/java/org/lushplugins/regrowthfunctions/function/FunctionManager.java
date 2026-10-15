@@ -18,7 +18,9 @@ public class FunctionManager {
     private final HashMap<String, Function> functions = new HashMap<>();
 
     public FunctionManager() {
-        RegrowthFunctions.getInstance().saveDefaultResource("functions/example.yml");
+        if (!Files.exists(FUNCTIONS_DIR)) {
+            RegrowthFunctions.getInstance().saveDefaultResource("functions/example.yml");
+        }
     }
 
     public void reload() {
